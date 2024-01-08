@@ -4,8 +4,11 @@
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
+
     """Superclass BaseModel that will be inherited with all other classes"""
+
     def __init__(self):
         """Initializing the Base Class"""
         self.id = str(uuid.uuid4())
@@ -14,7 +17,8 @@ class BaseModel:
 
     def __str__(self):
         """Print string representation of an instance"""
-        return "[<{}>] (<{}>) <{}>".format(type(self).__name__, self.id, self.__dict__)
+        return "[<{}>] (<{}>) <{}>".\
+            format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """updates the public instance attribute updated_at
