@@ -45,8 +45,8 @@ The cmd module has a public instance variable named prompt which allows you to c
 	prompt = '(hbnb) '
 
 6. As from now you can notice the program is not in a continous loop. For that you will need cmdloop() object.
-~ import cmd
-~ class HBNBCommand(cmd.Cmd):
+import cmd
+class HBNBCommand(cmd.Cmd):
 	"""My Entry point for the command interpreter"""
 	prompt = '(hbnb) '
 if __name__ == '__main__':
