@@ -3,6 +3,7 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -10,7 +11,8 @@ class HBNBCommand(cmd.Cmd):
     """The instance for the cmd module superclass"""
     prompt = "(hbnb) "
     __classes = {
-        "BaseModel"
+        "BaseModel",
+        "User"
     }
 
     def emptyline(self):
