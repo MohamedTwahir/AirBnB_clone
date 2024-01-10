@@ -32,8 +32,8 @@ class FileStorage:
         serializes __objects to the JSON file (path: __file_path)
         """
         serialized_objects = {}
-        #k stands for key
-        #o for value
+        # k stands for key
+        # o for value
         for k, o in FileStorage.__objects.items():
             serialized_objects[k] = o.to_dict()
 
@@ -41,8 +41,7 @@ class FileStorage:
             json.dump(serialized_objects, f)
 
     def classes(self):
-         """Returns a dictionary of valid classes and their references."""
-        from models.base_model import BaseModel
+        """Returns a dictionary of valid classes and their references."""
         from models.user import User
         from models.state import State
         from models.city import City

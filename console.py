@@ -5,6 +5,11 @@ import cmd
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -12,7 +17,12 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __classes = {
         "BaseModel",
-        "User"
+        "User",
+        "State",
+        "Amenity",
+        "Review",
+        "Place",
+        "City"
     }
 
     def emptyline(self):
