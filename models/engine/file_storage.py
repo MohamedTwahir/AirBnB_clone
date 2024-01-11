@@ -33,8 +33,8 @@ class FileStorage:
         """
         serialized_objects = {}
         # k stands for key
-        # o for value
-        for k, o in FileStorage.__objects.items():
+        # v for value
+        for k, v in FileStorage.__objects.items():
             serialized_objects[k] = o.to_dict()
 
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
@@ -42,6 +42,7 @@ class FileStorage:
 
     def classes(self):
         """Returns a dictionary of valid classes and their references."""
+        from models.base_model import BaseModel
         from models.user import User
         from models.state import State
         from models.city import City
@@ -69,5 +70,5 @@ class FileStorage:
         with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
             obj_dict = json.load(f)
             obj_dict = {k: self.classes()[v["__class__"]](**o)
-                        for k, o in obj_dict.items()}
+                        for k, v in obj_dict.items()}
             FileStorage.__objects = obj_dict
