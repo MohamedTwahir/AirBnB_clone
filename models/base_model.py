@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-""""Module for the superclass BaseModel"""
+"""Module for the class BaseModel"""
+
 
 import uuid
 from datetime import datetime
-import models
 
 
 class BaseModel:
-
     """Superclass BaseModel that will be inherited with all other classes"""
 
     def __init__(self, *args, **kwargs):
