@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for the HBnB console."""
+"""Entry point for the console"""
 import cmd
 import re
 from shlex import split
@@ -32,8 +32,7 @@ def parse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """
-    A subclass of the command module that enables us to have a console
+    """Instance of the cmd module
     """
 
     prompt = "(hbnb) "
@@ -48,11 +47,11 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def emptyline(self):
-        """It enables the console to do nothing when there is an empty line"""
+        """It Does nothing upon receiving an empty line."""
         pass
 
     def default(self, arg):
-        """Printed when an invalid argument is passed"""
+        """Default behavior for cmd module when input is invalid"""
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
@@ -82,9 +81,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """
-        Creates a new class instance and prints its id
-        Example: create <class>
+        """Example: create <class>
+        Creates a new class instance and print its id.
         """
         argl = parse(arg)
         if len(argl) == 0:
@@ -96,9 +94,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, arg):
-        """
+        """Example: show <class> <id> or <class>.show(<id>)
         Displays the string representation of a class instance of a given id.
-        Example: show <class> <id> or <class>.show(<id>)
         """
         argl = parse(arg)
         objdict = storage.all()
@@ -114,10 +111,8 @@ class HBNBCommand(cmd.Cmd):
             print(objdict["{}.{}".format(argl[0], argl[1])])
 
     def do_destroy(self, arg):
-        """
-        Deletes a class instance of a given id.
-        Example: destroy <class> <id> or <class>.destroy(<id>)
-        """
+        """Example: destroy <class> <id> or <class>.destroy(<id>)
+        Deletes a class instance of a given id."""
         argl = parse(arg)
         objdict = storage.all()
         if len(argl) == 0:
@@ -133,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """
+        """Example: all or all <class> or <class>.all()
         Displays string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
         argl = parse(arg)
@@ -149,9 +144,8 @@ class HBNBCommand(cmd.Cmd):
             print(objl)
 
     def do_count(self, arg):
-        """
-        Retrieves the number of instances of a given class.
-        """
+        """Example: count <class> or <class>.count()
+        Retrieves the number of instances of a given class."""
         argl = parse(arg)
         count = 0
         for obj in storage.all().values():
@@ -160,13 +154,11 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def do_update(self, arg):
-        """
-        Updates a class instance of a given id by adding or updating
-        a given attribute key/value pair or dictionary.
-        Example: update <class> <id> <attribute_name> <attribute_value> or
+        """Example: update <class> <id> <attribute_name> <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
        <class>.update(<id>, <dictionary>)
-        """
+        Updates  a class instance of a given id by adding or updating
+        a given attribute key/value pair or dictionary."""
         argl = parse(arg)
         objdict = storage.all()
 
